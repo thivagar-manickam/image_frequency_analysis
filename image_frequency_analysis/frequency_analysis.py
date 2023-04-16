@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 
 class FrequencyAnalysis:
@@ -29,7 +30,10 @@ class FrequencyAnalysis:
     """
 
     def load_image(self, image_path):
-        return cv2.imread(f"{image_path}", 0)
+        if os.path.exists(self.image_path):
+            return cv2.imread(f"{image_path}", 0)
+        else:
+            raise FileNotFoundError(f"File not found: {image_path}")
 
     """
     Definition to find the discrete fourier
@@ -96,19 +100,19 @@ class FrequencyAnalysis:
             self.radius * self.radius
         )
 
-    def plot_graph(self, mask, frequency_shift_magnitude, image):
+    def plot_graph(self, frequency_shift_magnitude, image):
         plt.figure(figsize=(20, 10))
 
-        plt.subplot(2, 2, 1)
-        plt.imshow(self.get_magnitude_spectrum(), cmap="gray")
+        plt.subplot(1, 3, 1)
+        plt.title("Original Image")
+        plt.imshow(self.image)
 
-        plt.subplot(2, 2, 2)
-        plt.imshow(mask[:, :, 0], cmap="gray")
-
-        plt.subplot(2, 2, 3)
+        plt.subplot(1, 3, 2)
+        plt.title("Frequency Shifted Mask")
         plt.imshow(frequency_shift_magnitude, cmap="gray")
 
-        plt.subplot(2, 2, 4)
+        plt.subplot(1, 3, 3)
+        plt.title("Image post applying the filter mask")
         plt.imshow(image, cmap="gray")
 
     def perform_filtering_and_inverse_transform(self, mask):
@@ -126,7 +130,7 @@ class FrequencyAnalysis:
             inverse_discrete_transform[:, :, 0], inverse_discrete_transform[:, :, 1]
         )
 
-        self.plot_graph(mask, frequency_mask_magnitude, original_image)
+        self.plot_graph(frequency_mask_magnitude, original_image)
 
         return original_image
 
