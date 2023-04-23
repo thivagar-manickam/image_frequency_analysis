@@ -1,3 +1,5 @@
 dist
 image_frequency_analysis.egg-info
 image_frequency_analysis/__pycache__
+build/lib/image_frequency_analysis/__init__.py
+build/lib/image_frequency_analysis/frequency_analysis.py
