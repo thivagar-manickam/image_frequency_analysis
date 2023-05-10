@@ -36,3 +36,4 @@ the optional parameters that can be sent to the function.
 You can find the various optional parameters and their usage in the package using the help command.
 
 ` help(ifa.FrequencyAnalysis) ` or looking through the docstring directly in the IDE
+
