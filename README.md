@@ -16,18 +16,18 @@ You can install the package using the pip command
 ## Using the package
 Once you have installed you can use the package by importing the image_frequency_analysis method from the package
 
-` from image_frequency_analysis import image_frequency_analysis as ifa `
+` import image_frequency_analysis as ifa `
 
 You can then pass the image path to the function which is a required argument, to get the plot 
 of comparison between the original image and the filtered image
 
 **Example:**
 
-` ifa('sandstone.tif') `
+` ifa.FrequencyAnalysis('sandstone.tif') `
 
 **Sample Output:**
 
-![image](https://user-images.githubusercontent.com/51501788/233843791-a3fc6c79-ea7f-43ed-8e13-da91caf21749.png)
+![image](https://github.com/thivagar-manickam/image_frequency_analysis/assets/51501788/e94cc29b-a7a5-4768-aebf-5e4a17a92517)
 
 
 By default the package uses the high pass filter to perform the filtering of the image. This option can be overridden using
@@ -35,8 +35,5 @@ the optional parameters that can be sent to the function.
 
 You can find the various optional parameters and their usage in the package using the help command.
 
-` help(ifa) ` or `help(image_frequency_analysis`
+` help(ifa.FrequencyAnalysis) ` or looking through the docstring directly in the IDE
 
-
-For request of any new feature or an issue please raise an issue
-with the appropriate label as Bug or Enhancement - [Raise Issue](https://github.com/thivagar-manickam/image_frequency_analysis/issues)
