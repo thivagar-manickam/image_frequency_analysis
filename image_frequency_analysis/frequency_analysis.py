@@ -5,6 +5,29 @@ import os
 
 
 class FrequencyAnalysis:
+    """
+    This definition invokes the Frequency Analysis class
+    to apply the Transformation on the image based on the
+    attributes passed to the class
+
+    Attributes:
+
+    image_path - This is the file path for the image on which the transformation needs to be applied
+
+    filter_radius - This property defines to what extent the low or high frequency value needs to be allowed to
+                    pass through in the filtering process. Default value = 80
+
+    high_pass_filter - This is a boolean value which indicates to use the default high pass filter mask on the image.
+                    Default value = False
+
+    low_pass_filter - This is a boolean value which indicates to use the default low pass filter mask on the image.
+                    Default value = False
+
+    When both the high_pass_filter and low_pass_filter is False, by default high pass filter mask is applied on the image.
+
+    Throws value error when both high_pass_filter and low_pass_filter value are set to be True.
+
+    """
     def __init__(
         self,
         image_path,
@@ -24,9 +47,6 @@ class FrequencyAnalysis:
         self.high_pass_filter = high_pass_filter
         self.low_pass_filter = low_pass_filter
         self.image = self.load_image(self.image_path)
-
-        if not high_pass_filter and not low_pass_filter:
-            self.high_pass_filter = True
 
         self.perform_image_frequency_analysis()
 
@@ -119,7 +139,8 @@ class FrequencyAnalysis:
         plt.imshow(frequency_shift_magnitude, cmap="gray")
 
         plt.subplot(1, 3, 3)
-        plt.title("Image post applying the filter mask")
+        filter_type = "Low Pass filter" if self.low_pass_filter else "High Pass Filter"
+        plt.title(f"Image post applying the {filter_type} mask")
         plt.imshow(image, cmap="gray")
 
     def perform_filtering_and_inverse_transform(self, mask):
@@ -154,6 +175,15 @@ class FrequencyAnalysis:
         return self.perform_filtering_and_inverse_transform(lpf_mask)
 
     def perform_image_frequency_analysis(self):
+        if self.high_pass_filter and self.low_pass_filter:
+            raise ValueError(
+                        "Both high_pass_filter and low_pass_filter flag cannot be True. Please choose only one type "
+                        "of filter"
+                    )
+
+        if not self.high_pass_filter and not self.low_pass_filter:
+            self.high_pass_filter = True
+
         self.calculate_dft_of_image()
 
         self.perform_frequency_shifting()
@@ -170,3 +200,4 @@ class FrequencyAnalysis:
         final_image = (final_image / final_image.max() * 255).astype("uint8")
 
         return final_image
+
