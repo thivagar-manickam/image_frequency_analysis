@@ -37,6 +37,3 @@ You can find the various optional parameters and their usage in the package usin
 
 ` help(ifa.FrequencyAnalysis) ` or looking through the docstring directly in the IDE
 
-
-For request of any new feature or an issue please raise an issue
-with the appropriate label as Bug or Enhancement - [Raise Issue](https://github.com/thivagar-manickam/image_frequency_analysis/issues)
