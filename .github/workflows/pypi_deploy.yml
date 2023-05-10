@@ -1,9 +1,7 @@
 name: PyPI Deployment
 
 on:
-  workflow_run:
-    workflows:
-      - "Build and Deploy"
+  push:
     branches:
       - master
 
