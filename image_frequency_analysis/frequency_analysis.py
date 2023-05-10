@@ -12,6 +12,13 @@ class FrequencyAnalysis:
         high_pass_filter=False,
         low_pass_filter=False,
     ):
+        self.mask_area = None
+        self.fft_image = None
+        self.dft_image = None
+        self.column_center = None
+        self.row_center = None
+        self.rows = None
+        self.columns = None
         self.image_path = image_path
         self.radius = filter_radius
         self.high_pass_filter = high_pass_filter
