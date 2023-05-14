@@ -25,11 +25,6 @@ of comparison between the original image and the filtered image
 
 ` ifa.FrequencyAnalysis('sandstone.tif') `
 
-**Sample Output:**
-
-![image](https://github.com/thivagar-manickam/image_frequency_analysis/assets/51501788/e94cc29b-a7a5-4768-aebf-5e4a17a92517)
-
-
 By default the package uses the high pass filter to perform the filtering of the image. This option can be overridden using
 the optional parameters that can be sent to the function.
 
