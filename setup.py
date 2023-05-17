@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="image_frequency_analysis",
-    version="0.2.3",
+    version="0.2.4",
     author="M Thivagar",
     packages=find_packages(),
     install_requires=["opencv-python", "numpy", "pandas", "matplotlib"],
