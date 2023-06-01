@@ -1,4 +1,12 @@
-# Image Frequency Analysis
+<div align="center">
+
+<h1> Image Frequency Analysis </h1>
+  
+[![PyPI version](https://badge.fury.io/py/image-frequency-analysis.svg)](https://pypi.org/project/image-frequency-analysis/)
+[![PyPI stats](https://img.shields.io/pypi/dm/image-frequency-analysis.svg)](https://pypistats.org/packages/image-frequency-analysis)
+[![Supported Python Versions](https://img.shields.io/pypi/pyversions/image-frequency-analysis.svg)](https://pypi.org/project/image-frequency-analysis/)
+
+</div>
 
 This package is build to combine all the steps that are done as part of the
 frequency analysis using the Fourier transform approach.
