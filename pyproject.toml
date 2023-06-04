@@ -1,12 +1,12 @@
-[project]
+[tool.poetry]
 name = "image_frequency_analysis"
 version = "0.2.5"
 description = "A package to perform image frequency analysis using the Fourier Transform method"
-authors = [{name = "M Thivagar"}]
+authors = ["M Thivagar"]
 readme = "README.md"
 homepage = "https://github.com/thivagar-manickam/image_frequency_analysis"
 repository = "https://github.com/thivagar-manickam/image_frequency_analysis"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.6"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -18,10 +18,15 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 keywords = ["Image Processing", "Fourier Transform", "Edge Detection", "Frequency analysis"]
-dependencies = [
-    "opencv-python", "numpy", "pandas", "matplotlib",
-]
+
+
+[tool.poetry.dependencies]
+python = "^3.6"
+opencv-python = ">=4.7.0.68"
+numpy = ">=1.24.0"
+pandas = ">=2.0.0"
+matplotlib = ">=3.6.3"
 
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
