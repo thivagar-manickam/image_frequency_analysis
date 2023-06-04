@@ -3,3 +3,9 @@ image_frequency_analysis.egg-info
 image_frequency_analysis/__pycache__
 build/lib/image_frequency_analysis/__init__.py
 build/lib/image_frequency_analysis/frequency_analysis.py
+.idea/image_frequency_analysis.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/.gitignore
