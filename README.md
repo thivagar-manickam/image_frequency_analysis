@@ -40,3 +40,13 @@ You can find the various optional parameters and their usage in the package usin
 
 ` help(ifa.FrequencyAnalysis) ` or looking through the docstring directly in the IDE
 
+## Sample Output
+
+**Output with default parameters**
+
+![Default Parameter Output](sampleOutput/Default_Param_Image.jpg)
+
+
+**Output with Modified Parameters**
+
+![Modified_Parameter_Output](sampleOutput/Parameterised_Image.jpg)
