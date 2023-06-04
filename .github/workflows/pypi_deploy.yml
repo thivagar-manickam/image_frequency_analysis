@@ -26,5 +26,5 @@ jobs:
           TWINE_USERNAME: ${{ secrets.PYPI_API_USERNAME }}  # Replace with your PyPI username
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}  # Set your PyPI API token as a secret in the repository settings
         run: |
-          python -m build
+          python setup.py sdist bdist_wheel
           twine upload --skip-existing dist/*
