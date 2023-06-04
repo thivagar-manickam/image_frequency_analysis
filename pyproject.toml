@@ -1,6 +1,6 @@
 [project]
 name = "image_frequency_analysis"
-version = "0.2.4"
+version = "0.2.5"
 description = "A package to perform image frequency analysis using the Fourier Transform method"
 authors = [{name = "M Thivagar"}]
 readme = "README.md"
