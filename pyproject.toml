@@ -1,0 +1,27 @@
+[project]
+name = "image_frequency_analysis"
+version = "0.2.5"
+description = "A package to perform image frequency analysis using the Fourier Transform method"
+authors = [{name = "M Thivagar"}]
+readme = "README.md"
+homepage = "https://github.com/thivagar-manickam/image_frequency_analysis"
+repository = "https://github.com/thivagar-manickam/image_frequency_analysis"
+license = {text = "MIT"}
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+keywords = ["Image Processing", "Fourier Transform", "Edge Detection", "Frequency analysis"]
+dependencies = [
+    "opencv-python", "numpy", "pandas", "matplotlib",
+]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
