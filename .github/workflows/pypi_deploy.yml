@@ -25,16 +25,8 @@ jobs:
           python -m pip install --upgrade pip poetry
           poetry install
 
-      - name: Configure Poetry
-        run: |
-          poetry config http-basic.pypi $POETRY_USERNAME $POETRY_PASSWORD
+      - name: Set Poetry config
+        run: poetry config pypi-token.pypi ${{ secrets.PYPI_PROJECT_TOKEN }}
 
-      - name: Build package
-        run: |
-          poetry build
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: distribution
-          path: dist/
+      - name: Publish package
+        run: poetry publish --build
