@@ -7,7 +7,6 @@ readme = "README.md"
 homepage = "https://github.com/thivagar-manickam/image_frequency_analysis"
 repository = "https://github.com/thivagar-manickam/image_frequency_analysis"
 license = "MIT"
-requires-python = ">=3.6"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.6",
@@ -21,7 +20,7 @@ keywords = ["Image Processing", "Fourier Transform", "Edge Detection", "Frequenc
 
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = ">=3.6"
 opencv-python = ">=4.7.0.68"
 numpy = ">=1.24.0"
 pandas = ">=2.0.0"
