@@ -3,7 +3,11 @@ name: PyPI Deployment
 on:
   release:
     types: [created]
-
+    
+env:
+  POETRY_USERNAME: ${{ secrets.PYPI_API_USERNAME }}
+  POETRY_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+  
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -21,8 +25,16 @@ jobs:
           python -m pip install --upgrade pip poetry
           poetry install
 
-      - name: Set Poetry config
-        run: poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+      - name: Configure Poetry
+        run: |
+          poetry config http-basic.pypi $POETRY_USERNAME $POETRY_PASSWORD
 
-      - name: Publish package
-        run: poetry publish --build
+      - name: Build package
+        run: |
+          poetry build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: distribution
+          path: dist/
