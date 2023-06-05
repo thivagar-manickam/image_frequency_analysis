@@ -4,6 +4,7 @@
   
 [![PyPI version](https://badge.fury.io/py/image-frequency-analysis.svg)](https://pypi.org/project/image-frequency-analysis/)
 [![PyPI stats](https://img.shields.io/pypi/dm/image-frequency-analysis.svg)](https://pypistats.org/packages/image-frequency-analysis)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/thivagar-manickam/image-frequency-analysis/blob/main/LICENSE)
 [![Supported Python Versions](https://img.shields.io/pypi/pyversions/image-frequency-analysis.svg)](https://pypi.org/project/image-frequency-analysis/)
 
 </div>
