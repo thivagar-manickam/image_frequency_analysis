@@ -32,7 +32,9 @@ of comparison between the original image and the filtered image
 
 **Example:**
 
-` ifa.FrequencyAnalysis('sandstone.tif') `
+`obj = ifa.FrequencyAnalysis('car_image.jpg')`
+
+`output = obj.perform_image_frequency_analysis()`
 
 By default the package uses the high pass filter to perform the filtering of the image. This option can be overridden using
 the optional parameters that can be sent to the function.
