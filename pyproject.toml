@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "image_frequency_analysis"
-version = "0.2.5"
+version = "0.2.6"
 description = "A package to perform image frequency analysis using the Fourier Transform method"
 authors = ["M Thivagar"]
 readme = "README.md"
