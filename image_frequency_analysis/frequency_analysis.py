@@ -46,9 +46,7 @@ class FrequencyAnalysis:
         self.radius = filter_radius
         self.high_pass_filter = high_pass_filter
         self.low_pass_filter = low_pass_filter
-        self.image = self.load_image(self.image_path)
-
-        self.perform_image_frequency_analysis()
+        self.image = self.__load_image(self.image_path)
 
     """
     Definition to load the image into the
@@ -56,7 +54,7 @@ class FrequencyAnalysis:
     processing
     """
 
-    def load_image(self, image_path):
+    def __load_image(self, image_path):
         if os.path.exists(self.image_path):
             return cv2.imread(f"{image_path}", 0)
         else:
@@ -67,7 +65,7 @@ class FrequencyAnalysis:
     transform value for the given image
     """
 
-    def calculate_dft_of_image(self):
+    def __calculate_dft_of_image(self):
         self.dft_image = cv2.dft(np.float32(self.image), flags=cv2.DFT_COMPLEX_OUTPUT)
 
     """
@@ -77,7 +75,7 @@ class FrequencyAnalysis:
     edges
     """
 
-    def perform_frequency_shifting(self):
+    def __perform_frequency_shifting(self):
         self.fft_image = np.fft.fftshift(self.dft_image)
 
     """
@@ -85,7 +83,7 @@ class FrequencyAnalysis:
     of the image
     """
 
-    def get_magnitude_spectrum(self):
+    def __get_magnitude_spectrum(self):
         return 20 * np.log(
             cv2.magnitude(self.fft_image[:, :, 0], self.fft_image[:, :, 1])
         )
@@ -95,7 +93,7 @@ class FrequencyAnalysis:
     image matrix
     """
 
-    def set_rows_columns_details(self):
+    def __set_rows_columns_details(self):
         self.rows, self.columns = self.image.shape
 
         self.row_center, self.column_center = int(self.rows / 2), int(self.columns / 2)
@@ -104,14 +102,14 @@ class FrequencyAnalysis:
     To get the high pass filter mask
     """
 
-    def get_high_pass_filter_mask_matrix(self):
+    def __get_high_pass_filter_mask_matrix(self):
         return np.ones((self.rows, self.columns, 2), np.uint8)
 
     """
     To get the low pass filter mask
     """
 
-    def get_low_pass_filter_mask_matrix(self):
+    def __get_low_pass_filter_mask_matrix(self):
         return np.zeros((self.rows, self.columns, 2), np.uint8)
 
     """
@@ -119,7 +117,7 @@ class FrequencyAnalysis:
     the rows and column information of the image
     """
 
-    def calculate_mask_area(self):
+    def __calculate_mask_area(self):
         center = [self.row_center, self.column_center]
         x_value, y_value = np.ogrid[: self.rows, : self.columns]
 
@@ -127,7 +125,7 @@ class FrequencyAnalysis:
             self.radius * self.radius
         )
 
-    def plot_graph(self, frequency_shift_magnitude, image):
+    def __plot_graph(self, frequency_shift_magnitude, image):
         plt.figure(figsize=(20, 10))
 
         plt.subplot(1, 3, 1)
@@ -143,7 +141,7 @@ class FrequencyAnalysis:
         plt.title(f"Image post applying the {filter_type} mask")
         plt.imshow(image, cmap="gray")
 
-    def perform_filtering_and_inverse_transform(self, mask):
+    def __perform_filtering_and_inverse_transform(self, mask):
         frequency_shift = self.fft_image * mask
 
         frequency_mask_magnitude = 20 * np.log(
@@ -158,23 +156,28 @@ class FrequencyAnalysis:
             inverse_discrete_transform[:, :, 0], inverse_discrete_transform[:, :, 1]
         )
 
-        self.plot_graph(frequency_mask_magnitude, original_image)
+        self.__plot_graph(frequency_mask_magnitude, original_image)
 
         return original_image
 
-    def perform_high_pass_filter_analysis(self):
-        hpf_mask = self.get_high_pass_filter_mask_matrix()
+    def __perform_high_pass_filter_analysis(self):
+        hpf_mask = self.__get_high_pass_filter_mask_matrix()
         hpf_mask[self.mask_area] = 0
 
-        return self.perform_filtering_and_inverse_transform(hpf_mask)
+        return self.__perform_filtering_and_inverse_transform(hpf_mask)
 
-    def perform_low_pass_filter_analysis(self):
-        lpf_mask = self.get_low_pass_filter_mask_matrix()
+    def __perform_low_pass_filter_analysis(self):
+        lpf_mask = self.__get_low_pass_filter_mask_matrix()
         lpf_mask[self.mask_area] = 1
 
-        return self.perform_filtering_and_inverse_transform(lpf_mask)
+        return self.__perform_filtering_and_inverse_transform(lpf_mask)
 
-    def perform_image_frequency_analysis(self):
+    def perform_image_frequency_analysis(self) -> np.ndarray:
+        """
+        Definition to initiate the Fourier Transformation
+        on the specified Image
+        Returns: numpy.ndarray - returns the transformed image as a numpy array
+        """
         if self.high_pass_filter and self.low_pass_filter:
             raise ValueError(
                         "Both high_pass_filter and low_pass_filter flag cannot be True. Please choose only one type "
@@ -184,20 +187,20 @@ class FrequencyAnalysis:
         if not self.high_pass_filter and not self.low_pass_filter:
             self.high_pass_filter = True
 
-        self.calculate_dft_of_image()
+        self.__calculate_dft_of_image()
 
-        self.perform_frequency_shifting()
+        self.__perform_frequency_shifting()
 
-        self.set_rows_columns_details()
+        self.__set_rows_columns_details()
 
-        self.calculate_mask_area()
+        self.__calculate_mask_area()
 
         if self.high_pass_filter:
-            final_image = self.perform_high_pass_filter_analysis()
+            final_image = self.__perform_high_pass_filter_analysis()
         else:
-            final_image = self.perform_low_pass_filter_analysis()
+            final_image = self.__perform_low_pass_filter_analysis()
 
-        final_image = (final_image / final_image.max() * 255).astype("uint8")
+        final_image = (final_image / final_image.max() * 255).astype('uint8')
 
         return final_image
 
