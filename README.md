@@ -3,13 +3,13 @@
 <h1> Image Frequency Analysis </h1>
   
 [![PyPI version](https://badge.fury.io/py/image-frequency-analysis.svg)](https://pypi.org/project/image-frequency-analysis/)
-[![PyPI stats](https://img.shields.io/pypi/dm/image-frequency-analysis.svg)](https://pypistats.org/packages/image-frequency-analysis)
+[![Downloads](https://static.pepy.tech/badge/image_frequency_analysis)](https://pepy.tech/project/image_frequency_analysis)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/thivagar-manickam/image-frequency-analysis/blob/main/LICENSE)
 [![Supported Python Versions](https://img.shields.io/pypi/pyversions/image-frequency-analysis.svg)](https://pypi.org/project/image-frequency-analysis/)
 
 </div>
 
-This package is build to combine all the steps that are done as part of the
+This package is built to combine all the steps that are done as part of the
 frequency analysis using the Fourier transform approach.
 
 
